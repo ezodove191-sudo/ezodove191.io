@@ -1,0 +1,327 @@
+/* animations.css - 增强动效与微交互 */
+
+/* ===== 页面切换过渡 ===== */
+.page {
+  animation: pageEnter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== 卡片悬浮增强 ===== */
+.list-grid .card,
+.category-card,
+.stat-card,
+.map-floor {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+}
+.list-grid .card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px var(--brand-glow);
+  border-color: rgba(232,198,106,0.2);
+}
+
+/* ===== 按钮微交互 ===== */
+.nav-action-btn {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-action-btn:active {
+  transform: scale(0.92);
+}
+
+/* ===== 侧边栏链接指示器动画（由 layout.css 定义样式，此处补充过渡） ===== */
+
+/* ===== 搜索框聚焦动效 ===== */
+.floating-search:focus-within {
+  animation: searchGlow 0.4s ease;
+}
+@keyframes searchGlow {
+  0% { box-shadow: 0 0 0 rgba(232,198,106,0); }
+  50% { box-shadow: 0 0 24px rgba(232,198,106,0.2); }
+  100% { box-shadow: 0 0 18px rgba(232,198,106,0.1); }
+}
+
+/* ===== 数字滚动动画 ===== */
+.stat-card-num {
+  transition: transform 0.3s;
+}
+.stat-card:hover .stat-card-num {
+  transform: scale(1.08);
+}
+
+/* ===== 标签入场动画 ===== */
+.card-tags .tag {
+  animation: tagFadeIn 0.4s ease backwards;
+}
+.card-tags .tag:nth-child(1) { animation-delay: 0.05s; }
+.card-tags .tag:nth-child(2) { animation-delay: 0.1s; }
+.card-tags .tag:nth-child(3) { animation-delay: 0.15s; }
+.card-tags .tag:nth-child(4) { animation-delay: 0.2s; }
+.card-tags .tag:nth-child(5) { animation-delay: 0.25s; }
+@keyframes tagFadeIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ===== 滚动进度条增强 ===== */
+#scroll-progress {
+  transition: width 0.1s linear;
+  background: linear-gradient(90deg, var(--brand), var(--teal));
+  box-shadow: 0 0 8px var(--brand-glow);
+}
+
+/* ===== 骨架屏闪烁 ===== */
+.skeleton-shimmer {
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.02) 0%,
+    rgba(255,255,255,0.06) 50%,
+    rgba(255,255,255,0.02) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ===== 详情页入场 ===== */
+.detail-header {
+  animation: detailHeaderEnter 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes detailHeaderEnter {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.detail-content {
+  animation: detailContentEnter 0.5s 0.1s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+@keyframes detailContentEnter {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== 列表项错开入场 ===== */
+.list-grid .card {
+  animation: cardEnter 0.4s ease backwards;
+}
+.list-grid .card:nth-child(1) { animation-delay: 0.02s; }
+.list-grid .card:nth-child(2) { animation-delay: 0.06s; }
+.list-grid .card:nth-child(3) { animation-delay: 0.1s; }
+.list-grid .card:nth-child(4) { animation-delay: 0.14s; }
+.list-grid .card:nth-child(5) { animation-delay: 0.18s; }
+.list-grid .card:nth-child(6) { animation-delay: 0.22s; }
+.list-grid .card:nth-child(7) { animation-delay: 0.26s; }
+.list-grid .card:nth-child(8) { animation-delay: 0.3s; }
+.list-grid .card:nth-child(9) { animation-delay: 0.34s; }
+.list-grid .card:nth-child(10) { animation-delay: 0.38s; }
+@keyframes cardEnter {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ===== 返回链接动画 ===== */
+.back-link {
+  transition: transform 0.2s, color 0.2s;
+}
+.back-link:hover {
+  transform: translateX(-4px);
+}
+
+/* ===== 主题切换按钮动效 ===== */
+.theme-toggle {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.theme-toggle:hover {
+  transform: rotate(180deg);
+}
+
+/* ===== 筛选标签动画 ===== */
+.filter-tag {
+  transition: all 0.2s ease;
+}
+.filter-tag.active {
+  animation: filterTagPop 0.3s ease;
+}
+@keyframes filterTagPop {
+  0% { transform: scale(0.9); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* ===== Toast 通知动画 ===== */
+.toast {
+  animation: toastIn 0.3s ease, toastOut 0.3s 2.7s ease forwards;
+}
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes toastOut {
+  to { opacity: 0; transform: translateY(20px); }
+}
+
+/* ===== UNIFIED INTRO OVERLAY ===== */
+#intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--bg-deep, #0a0c10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.6s ease;
+}
+#intro-overlay.intro-fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Phase container — only one visible at a time */
+.intro-phase {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.intro-phase.active {
+  opacity: 1;
+}
+
+/* ===== SPLASH PHASE ===== */
+.intro-splash .intro-icon-svg {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 28px;
+}
+.intro-ring {
+  fill: none;
+  stroke: var(--brand, #e8c66a);
+  stroke-width: 2;
+  opacity: 0;
+  stroke-dasharray: 340;
+  stroke-dashoffset: 340;
+  animation: introRingDraw 1.2s 0.2s ease forwards;
+}
+@keyframes introRingDraw {
+  to { opacity: 0.3; stroke-dashoffset: 0; }
+}
+.intro-arc-t {
+  fill: none;
+  stroke: var(--gold-2, #d4a946);
+  stroke-width: 2.5;
+  opacity: 0;
+  stroke-dasharray: 132;
+  stroke-dashoffset: 132;
+  animation: introArcDraw 0.8s 0.8s ease forwards;
+}
+.intro-arc-b {
+  fill: none;
+  stroke: var(--teal, #4a9d8e);
+  stroke-width: 2.5;
+  opacity: 0;
+  stroke-dasharray: 132;
+  stroke-dashoffset: 132;
+  animation: introArcDraw 0.8s 1.1s ease forwards;
+}
+@keyframes introArcDraw {
+  to { opacity: 0.6; stroke-dashoffset: 0; }
+}
+.intro-core {
+  fill: var(--gold-2, #d4a946);
+  opacity: 0;
+  transform-origin: 60px 60px;
+  animation: introCorePop 0.5s 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes introCorePop {
+  0% { opacity: 0; transform: scale(0); }
+  100% { opacity: 0.9; transform: scale(1); }
+}
+
+.intro-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--ink, #c8cdd6);
+  letter-spacing: 8px;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: introTextIn 0.8s 1.8s ease forwards;
+}
+.intro-sub {
+  font-size: 13px;
+  color: var(--ink-muted, #6b7280);
+  letter-spacing: 4px;
+  margin: 8px 0 0;
+  font-family: var(--font-mono, monospace);
+  opacity: 0;
+  animation: introTextIn 0.8s 2.2s ease forwards;
+}
+@keyframes introTextIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== LOADING PHASE ===== */
+.intro-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 48px;
+  border: 1px solid rgba(232, 198, 106, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.015);
+  backdrop-filter: blur(4px);
+  min-width: 280px;
+}
+.intro-card-icon {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 20px;
+  animation: introCardSpin 3s linear infinite;
+}
+@keyframes introCardSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.intro-card-text {
+  font-size: 14px;
+  color: var(--ink, #c8cdd6);
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+}
+.intro-card-bar {
+  width: 220px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.intro-card-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--brand, #e8c66a), var(--teal, #4a9d8e));
+  border-radius: 2px;
+  transition: width 0.35s ease;
+}
+.intro-card-status {
+  font-size: 11px;
+  color: var(--ink-muted, #6b7280);
+  font-family: var(--font-mono, monospace);
+  letter-spacing: 1px;
+}
+
+/* ===== 减少动画偏好 ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
